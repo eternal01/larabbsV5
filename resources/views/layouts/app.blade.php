@@ -32,7 +32,8 @@
 
     <div class="container">
 <!--     占位符声明，允许继承此模板的页面注入内容-->
-@yield('content')
+        @include('layouts._message')
+        @yield('content')
 
     </div>
 <!--     加载页面尾部导航区块的子模板-->
