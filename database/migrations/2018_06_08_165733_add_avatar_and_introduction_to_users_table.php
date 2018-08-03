@@ -13,11 +13,13 @@ class AddAvatarAndIntroductionToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->string('avatar')->nullable();
-            $table->string('introduction')->nullable();
-        });
+        if (!Schema::hasColumn('users','avatar') && !Schema::hasColumn('users','introduction')) {
+            Schema::table('users', function (Blueprint $table) {
+                //
+                $table->string('avatar')->nullable();
+                $table->string('introduction')->nullable();
+            });
+        }
     }
 
     /**
@@ -27,10 +29,12 @@ class AddAvatarAndIntroductionToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->dropColumn('avatar');
-            $table->dropColumn('introduction');
-        });
+        if (Schema::hasColumn('users','avatar') && Schema::hasColumn('users','introduction')) {
+            Schema::table('users', function (Blueprint $table) {
+                //
+                $table->dropColumn('avatar');
+                $table->dropColumn('introduction');
+            });
+        }
     }
 }
