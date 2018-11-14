@@ -17,11 +17,12 @@
 <!--    方便前台js获取token-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 <!--    继承此模板的页面，如果没有定制 title 区域的话，就会自动使用第二个参数 LaraBBS 作为标题前缀-->
-    <title>@yield('title', 'LaraBBS') - Laravel 进阶教程</title>
+    <title>@yield('title', 'LaraBBS')</title>
 
     <!-- Styles -->
 <!--    使用当前请求的协议（ HTTP 或 HTTPS ）为资源文件生成一个 URL-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 
 <body>
@@ -43,5 +44,6 @@
     <!-- Scripts -->
 <!--    使用当前请求的协议（ HTTP 或 HTTPS ）为资源文件生成一个 URL-->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
