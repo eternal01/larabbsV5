@@ -41,7 +41,9 @@
 <!--     加载页面尾部导航区块的子模板-->
         @include('layouts._footer')
             </div>
-
+@if (app()->isLocal())
+    @include('sudosu::user-selector')
+@endif
     <!-- Scripts -->
 <!--    使用当前请求的协议（ HTTP 或 HTTPS ）为资源文件生成一个 URL-->
     <script src="{{ asset('js/app.js') }}"></script>
